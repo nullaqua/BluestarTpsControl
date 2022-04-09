@@ -1,7 +1,7 @@
 name: BluestarTpsControl
 version: '${project.version}'
 main: me.lanzhi.bluestartpscontrol.BluestarTpsControl
-api-version: 1.18
+api-version: 1.13
 commands:
   settps:
     permission: bluestartpscontrol.use

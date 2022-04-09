@@ -3,11 +3,7 @@ package me.lanzhi.bluestartpscontrol;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.lang.instrument.ClassFileTransformer;
-import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Method;
-import java.security.ProtectionDomain;
-import javassist.*;
 
 public final class BluestarTpsControl extends JavaPlugin
 {
@@ -26,7 +22,7 @@ public final class BluestarTpsControl extends JavaPlugin
         {
             Bukkit.getLogger().warning("[BluestarTpsControl]错误!未找到类或方法,请反馈此bug谢谢");
         }
-        getCommand("settps").setExecutor(new miancommand());
+        getCommand("settps").setExecutor(new maincommand());
     }
 
     @Override
