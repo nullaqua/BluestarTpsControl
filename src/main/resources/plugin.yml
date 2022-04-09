@@ -1,0 +1,12 @@
+name: BluestarTpsControl
+version: '${project.version}'
+main: me.lanzhi.bluestartpscontrol.BluestarTpsControl
+api-version: 1.18
+commands:
+  settps:
+    permission: bluestartpscontrol.use
+permissions:
+  bluestartpscontrol.*:
+    children:
+      bluestartpscontrol.use:
+        default: false
