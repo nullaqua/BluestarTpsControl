@@ -15,7 +15,7 @@ public class BluestarTpsControlApi
         }
         catch (Throwable e)
         {
-            return false;
+            throw new RuntimeException(e);
         }
     }
     public static long getmspt()
@@ -26,7 +26,7 @@ public class BluestarTpsControlApi
         }
         catch (Throwable e)
         {
-            return 0;
+            throw new RuntimeException(e);
         }
     }
 }

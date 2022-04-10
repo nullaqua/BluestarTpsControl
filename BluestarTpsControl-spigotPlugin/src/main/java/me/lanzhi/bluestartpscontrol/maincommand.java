@@ -28,6 +28,7 @@ public class maincommand implements CommandExecutor
         if (tps<=0||tps>1000)
         {
             sender.sendMessage(ChatColor.RED+"tps应该大于0小于等于1000");
+            return false;
         }
         try
         {

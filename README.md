@@ -36,7 +36,7 @@
 API支持:
 
 添加依赖:
-- 将BluestarTpsControl-spigotPlugin作为依赖放入
+- 将BluestarTpsControl-spigotPlugin.jar作为依赖
 
 使用:
 ```java
@@ -44,7 +44,7 @@ package me.lanzhi.bluestartpscontrol;
 public class BluestarTpsControlApi
 { 
     //设置mspt(即每个tick多长时间,例如20tps,mspt=50)mspt=1000/tps
-    //在mspt小于等于0时,抛出错误 MsptIllegalException ;
+    //在mspt小于等于0时,抛出错误 me.lanzhi.bluestartpscontrol.MsptIllegalException ;
     public static boolean setmspt(long mspt) throws MsptIllegalException;
     //获取mspt
     public static long getmspt();

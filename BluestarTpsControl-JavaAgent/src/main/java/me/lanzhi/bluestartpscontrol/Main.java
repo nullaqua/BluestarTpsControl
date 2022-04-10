@@ -43,7 +43,7 @@ public class Main
                 try
                 {
                     CtClass clazz=pool.get(className);
-                    clazz.addField(CtField.make("private static long BluestarMSPT = 50L;",clazz));
+                    clazz.addField(CtField.make("private static long BluestarMSPT = 0L;",clazz));
                     clazz.getDeclaredMethod("bh").insertBefore("{ $0.ao += BluestarMSPT - 50L; }");
                     clazz.addMethod(CtNewMethod.make("public static void setmspt(long mspt){ if(mspt!=0L)BluestarMSPT=mspt; }",clazz));
                     clazz.addMethod(CtNewMethod.make("public static void getmspt(){ return BluestarMSPT; }",clazz));
