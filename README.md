@@ -32,3 +32,40 @@
 - 仅加载插件,但不使用```javaAgent```启动服务器,插件无法正常工作
 - 如果按说明启动服务器之后再热加载插件是可以正常使用的
 - 使用```plugman```或是```/reload```卸载插件仅仅是删除了```/settps```指令,要真正去除对服务器的修改需要重启服务器
+
+[![](https://jitpack.io/v/lanzhi6/BluestarTpsControl.svg)](https://jitpack.io/#lanzhi6/BluestarTpsControl) API支持:
+
+添加依赖:
+- 添加储存库:
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+- 添加依赖:
+```xml
+	<dependency>
+	    <groupId>com.github.lanzhi6</groupId>
+	    <artifactId>BluestarTpsControl</artifactId>
+	    <version>1.1</version>
+	</dependency>
+```
+
+使用:
+```java
+package me.lanzhi.bluestartpscontrol;
+public class BluestarTpsControlApi
+{
+    public static boolean setmspt(long mspt) throws MsptIllegalException;
+
+    public static long getmspt();
+}
+//设置mspt(即每个tick多长时间,例如20tps,mspt=50)mspt=1000/tps
+//在mspt小于等于0时,抛出错误 MsptIllegalException ;
+//me.lanzhi.bluestartpscontrol.BluestarTpsControlApi.setmspt(mspt);
+//获取mspt
+//me.lanzhi.bluestartpscontrol.BluestarTpsControlApi.getmspt();
+```
