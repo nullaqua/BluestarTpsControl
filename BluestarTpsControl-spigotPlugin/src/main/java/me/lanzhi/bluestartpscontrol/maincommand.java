@@ -31,7 +31,7 @@ public class maincommand implements CommandExecutor
         }
         try
         {
-            BluestarTpsControl.setmspt.invoke(null,(long)(1000D/tps));
+            BluestarTpsControlApi.setmspt((long)(1000D/tps));
         }
         catch (Throwable e)
         {

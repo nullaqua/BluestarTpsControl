@@ -18,12 +18,13 @@ public class Main
         @Override
         public byte[] transform(final ClassLoader loader,String className,final Class<?> classBeingRedefined,final ProtectionDomain protectionDomain,final byte[] classfileBuffer)
         {
-            if (className.equals("org/spigotmc/TicksPerSecondCommand"))
+            className=className.replace('/','.');
+            if (className.equals("org.spigotmc.TicksPerSecondCommand"))
             {
                 try
                 {
                     pool.insertClassPath(new LoaderClassPath(loader));
-                    CtClass clazz=pool.get(className.replace('/','.'));
+                    CtClass clazz=pool.get(className);
                     clazz.getDeclaredMethod("format").setBody(
                             "{ return ($1 > 21.0D ? org.bukkit.ChatColor.AQUA : $1 > 18.0D ? org.bukkit.ChatColor.GREEN : $1 > 16.0D ?"+
                                     "org.bukkit.ChatColor.YELLOW : org.bukkit.ChatColor.RED).toString() +"+
@@ -33,20 +34,19 @@ public class Main
                 }
                 catch (Throwable e)
                 {
-                    throw new RuntimeException(e);
+                    System.out.println("服务器修改失败");
                 }
             }
-            className=className.replace('/','.');
-            final CtClass clazz;
             if (className.equals("net.minecraft.server.MinecraftServer"))
             {
                 pool.insertClassPath(new LoaderClassPath(loader));
                 try
                 {
-                    clazz=pool.get(className);
-                    clazz.addField(CtField.make("public static long shouldWaitTickTime = 50L;",clazz));
-                    clazz.getDeclaredMethod("bh").insertBefore("{ $0.ao += shouldWaitTickTime - 50L; }");
-                    clazz.addMethod(CtNewMethod.make("public static void setmspt(long mspt){ shouldWaitTickTime=mspt; }",clazz));
+                    CtClass clazz=pool.get(className);
+                    clazz.addField(CtField.make("private static long BluestarMSPT = 50L;",clazz));
+                    clazz.getDeclaredMethod("bh").insertBefore("{ $0.ao += BluestarMSPT - 50L; }");
+                    clazz.addMethod(CtNewMethod.make("public static void setmspt(long mspt){ if(mspt!=0L)BluestarMSPT=mspt; }",clazz));
+                    clazz.addMethod(CtNewMethod.make("public static void getmspt(){ return BluestarMSPT; }",clazz));
                     System.out.println("[BluestarTpsControl] Class "+className+" 变更成功");
                     return clazz.toBytecode();
                 }
