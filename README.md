@@ -3,6 +3,7 @@
 
 使用说明:
 - 关闭服务器
+- <font color=Red>若为```purpur```服务端必须打开```purpur.yml```中的```tps-catchup```(此项默认为开启,在其他服务端中是始终开启的,而purpur增加了关闭选项。若关闭可能会导致出现bug)</font>
 - 下载```BluestarTpsControl-javaAgent```和```BluestarTpsControl-spigotPlugin```两个jar文件
 - 将```BluestarTpsControl-spigotPlugin```放入plugins文件夹
 - 将```BluestarTpsControl-javaAgent```放入服务器文件夹(也就是和服务器的jar放在一起)
