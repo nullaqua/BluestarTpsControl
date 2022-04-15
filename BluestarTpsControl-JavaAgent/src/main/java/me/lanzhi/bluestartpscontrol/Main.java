@@ -34,7 +34,7 @@ public class Main
                 }
                 catch (Throwable e)
                 {
-                    System.out.println("服务器修改失败");
+                    System.out.println("[BluestarTpsControl] Class "+className+" 修改失败!");
                 }
             }
             if (className.equals("net.minecraft.server.MinecraftServer"))
@@ -43,8 +43,9 @@ public class Main
                 try
                 {
                     CtClass clazz=pool.get(className);
-                    clazz.addField(CtField.make("private static long BluestarMSPT = 0L;",clazz));
-                    clazz.getDeclaredMethod("bh").insertBefore("{ $0.ao += BluestarMSPT - 50L; }");
+                    clazz.addField(CtField.make("private static long BluestarMSPT=50L;",clazz));
+                    clazz.getDeclaredMethod("bg").insertBefore("{ $0.ao+=BluestarMSPT-50L; }");
+                    clazz.getDeclaredMethod("bh").insertBefore("{ $0.ap=java.lang.Math.max(net.minecraft.SystemUtils.b()+BluestarMSPT,$0.ao); }");
                     clazz.addMethod(CtNewMethod.make("public static void setmspt(long mspt){ if(mspt!=0L)BluestarMSPT=mspt; }",clazz));
                     clazz.addMethod(CtNewMethod.make("public static void getmspt(){ return BluestarMSPT; }",clazz));
                     System.out.println("[BluestarTpsControl] Class "+className+" 变更成功");
@@ -52,7 +53,7 @@ public class Main
                 }
                 catch (Throwable e)
                 {
-                    System.out.println("服务器修改失败");
+                    System.out.println("[BluestarTpsControl] Class "+className+" 修改失败!");
                 }
             }
             return null;
