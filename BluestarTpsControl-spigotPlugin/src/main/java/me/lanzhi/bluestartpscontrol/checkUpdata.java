@@ -16,6 +16,7 @@ public class checkUpdata extends BukkitRunnable
     @Override
     public void run()
     {
+        System.out.println("BluestarTpsControl检测更新...");
         String upDataUrl="https://api.github.com/repos/lanzhi6/BluestarTpsControl/releases/latest";
         String result = "";
         BufferedReader in = null;
@@ -68,6 +69,10 @@ public class checkUpdata extends BukkitRunnable
             Bukkit.getLogger().warning("请尽快更新!");
             Bukkit.getLogger().warning(" ");
             Bukkit.getLogger().warning(ChatColor.RED + "---------------------------");
+        }
+        else
+        {
+            System.out.println("BluestarTpsControl已是最新版本!");
         }
     }
 }
