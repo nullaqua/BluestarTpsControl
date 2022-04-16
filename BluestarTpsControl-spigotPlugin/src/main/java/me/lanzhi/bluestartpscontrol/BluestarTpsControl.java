@@ -1,7 +1,9 @@
 package me.lanzhi.bluestartpscontrol;
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.lang.reflect.Method;
 
@@ -10,10 +12,13 @@ public final class BluestarTpsControl extends JavaPlugin
     public static Class<?> minecraftServerClass;
     public static Method setmspt;
     public static Method getmspt;
+    public static Plugin plugin;
+    private BukkitTask task;
     @Override
     public void onEnable()
     {
         System.out.println("BluestarTpsControl已启用");
+        plugin = this;
         try
         {
             minecraftServerClass=Class.forName("net.minecraft.server.MinecraftServer");
@@ -26,11 +31,13 @@ public final class BluestarTpsControl extends JavaPlugin
         }
         getCommand("settps").setExecutor(new maincommand());
         new Metrics(this,14894);
+        task = new checkUpdata().runTaskTimerAsynchronously(this,0,12000);
     }
 
     @Override
     public void onDisable()
     {
+        task.cancel();
         System.out.println("BluestarTpsControl已禁用");
     }
 }
