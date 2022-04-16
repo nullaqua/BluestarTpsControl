@@ -29,4 +29,15 @@ public class BluestarTpsControlApi
             throw new RuntimeException(e);
         }
     }
+    public static String tpsFormat(double tps)
+    {
+        try
+        {
+            return (String)BluestarTpsControl.BluestarTpsControlFormat.invoke(null,tps);
+        }
+        catch (Throwable e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
 }

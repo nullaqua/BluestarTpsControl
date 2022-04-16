@@ -12,6 +12,7 @@ public final class BluestarTpsControl extends JavaPlugin
     public static Class<?> minecraftServerClass;
     public static Method setmspt;
     public static Method getmspt;
+    public static Method BluestarTpsControlFormat;
     public static Plugin plugin;
     private BukkitTask task;
     @Override
@@ -24,6 +25,7 @@ public final class BluestarTpsControl extends JavaPlugin
             minecraftServerClass=Class.forName("net.minecraft.server.MinecraftServer");
             setmspt=minecraftServerClass.getMethod("setmspt",long.class);
             getmspt=minecraftServerClass.getMethod("getmspt");
+            BluestarTpsControlFormat=Class.forName("org.spigotmc.TicksPerSecondCommand").getMethod("BluestarTpsControlFormat",double.class);
         }
         catch (Throwable e)
         {
