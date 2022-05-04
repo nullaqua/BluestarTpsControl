@@ -6,7 +6,7 @@
 
     <groupId>me.lanzhi</groupId>
     <artifactId>BluestarTpsControl</artifactId>
-    <version>1.5</version>
+    <version>1.7</version>
     <packaging>pom</packaging>
 
     <properties>

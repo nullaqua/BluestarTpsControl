@@ -7,6 +7,11 @@ import org.bukkit.command.CommandSender;
 
 public class maincommand implements CommandExecutor
 {
+    final private BluestarTpsControl plugin;
+    public maincommand(BluestarTpsControl plugin)
+    {
+        this.plugin=plugin;
+    }
     @Override
     public boolean onCommand(CommandSender sender,Command command,String label,String[] args)
     {
@@ -30,9 +35,12 @@ public class maincommand implements CommandExecutor
             sender.sendMessage(ChatColor.RED+"tps应该大于0小于等于1000");
             return false;
         }
+        long mspt=(long)(1000D/tps);
+        plugin.getConfig().set("mspt",mspt);
+        plugin.saveConfig();
         try
         {
-            BluestarTpsControlApi.setmspt((long)(1000D/tps));
+           plugin.getApi().setmspt(mspt);
         }
         catch (Throwable e)
         {

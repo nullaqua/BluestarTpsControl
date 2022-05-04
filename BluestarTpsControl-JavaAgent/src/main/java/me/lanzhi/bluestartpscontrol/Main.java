@@ -29,7 +29,7 @@ public class Main
                             "{ return ($1 > 21.0D ? org.bukkit.ChatColor.AQUA : $1 > 18.0D ? org.bukkit.ChatColor.GREEN : $1 > 16.0D ?"+
                                     "org.bukkit.ChatColor.YELLOW : org.bukkit.ChatColor.RED).toString() +"+
                                     "((double)Math.round($1 * 100.0D) / 100.0D); }");
-                    clazz.addMethod(CtNewMethod.make("public static String BluestarTpsControlFormat(double tps){return format(tps);}",clazz));
+                    //clazz.addMethod(CtNewMethod.make("public static String BluestarTpsControlFormat(double tps){return format(tps);}",clazz));
                     System.out.println("[BluestarTpsControl] Class "+className+" 变更成功");
                     return clazz.toBytecode();
                 }

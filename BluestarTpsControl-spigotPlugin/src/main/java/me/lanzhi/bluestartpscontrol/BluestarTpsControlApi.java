@@ -1,16 +1,26 @@
 package me.lanzhi.bluestartpscontrol;
 
-public class BluestarTpsControlApi
+import org.bukkit.ChatColor;
+
+public class BluestarTpsControlApi implements BluestarTpsControlAPI
 {
-    public static boolean setmspt(long mspt) throws MsptIllegalException
+    private BluestarTpsControl plugin;
+
+    public BluestarTpsControlApi(BluestarTpsControl plugin)
     {
-        if(mspt<=0)
+        this.plugin=plugin;
+    }
+
+    @Override
+    public boolean setmspt(long mspt) throws MsptIllegalException
+    {
+        if (mspt<=0)
         {
             throw new MsptIllegalException();
         }
         try
         {
-            BluestarTpsControl.setmspt.invoke(null,mspt);
+            plugin.getSetmspt().invoke(null,mspt);
             return true;
         }
         catch (Throwable e)
@@ -18,26 +28,23 @@ public class BluestarTpsControlApi
             throw new RuntimeException(e);
         }
     }
-    public static long getmspt()
+
+    @Override
+    public long getmspt()
     {
         try
         {
-            return (long)BluestarTpsControl.getmspt.invoke(null);
+            return (long) plugin.getGetmspt().invoke(null);
         }
         catch (Throwable e)
         {
             throw new RuntimeException(e);
         }
     }
-    public static String tpsFormat(double tps)
+
+    @Override
+    public String tpsFormat(double tps)
     {
-        try
-        {
-            return (String)BluestarTpsControl.BluestarTpsControlFormat.invoke(null,tps);
-        }
-        catch (Throwable e)
-        {
-            throw new RuntimeException(e);
-        }
+        return (tps>21.0D?ChatColor.AQUA:tps>18.0D?ChatColor.GREEN:tps>16.0D?ChatColor.YELLOW:ChatColor.RED).toString()+((double) Math.round(tps*100.0D)/100.0D);
     }
 }

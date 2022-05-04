@@ -13,6 +13,11 @@ import java.util.regex.Pattern;
 
 public class checkUpdata extends BukkitRunnable
 {
+    final private BluestarTpsControl plugin;
+    public checkUpdata(BluestarTpsControl plugin)
+    {
+        this.plugin=plugin;
+    }
     @Override
     public void run()
     {
@@ -60,7 +65,7 @@ public class checkUpdata extends BukkitRunnable
             Bukkit.getLogger().warning("[BluestarTpsControl]无法获取最新插件版本 code:0X03");
             return;
         }
-        if (!latestVer.equals(BluestarTpsControl.plugin.getDescription().getVersion()))
+        if (!latestVer.equals(plugin.getDescription().getVersion()))
         {
             Bukkit.getLogger().warning(ChatColor.RED + "---------------------------");
             Bukkit.getLogger().warning(" ");

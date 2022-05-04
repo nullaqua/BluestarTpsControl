@@ -7,7 +7,7 @@
     <parent>
         <groupId>me.lanzhi</groupId>
         <artifactId>BluestarTpsControl</artifactId>
-        <version>1.5</version>
+        <version>1.7</version>
     </parent>
 
     <artifactId>BluestarTpsControl-spigotPlugin</artifactId>
@@ -43,6 +43,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -50,6 +54,12 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.17.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lanzhi6</groupId>
+            <artifactId>BluestarTpsControlAPI</artifactId>
+            <version>1.7</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
