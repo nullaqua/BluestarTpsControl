@@ -18,7 +18,7 @@ public class maincommand implements CommandExecutor
         if (args.length < 1)
         {
             sender.sendMessage(ChatColor.RED+"请输入tps");
-            return false;
+            return true;
         }
         double tps;
         try
@@ -28,12 +28,12 @@ public class maincommand implements CommandExecutor
         catch (NumberFormatException e)
         {
             sender.sendMessage(ChatColor.RED+"请输入正确的数");
-            return false;
+            return true;
         }
         if (tps<=0||tps>1000)
         {
             sender.sendMessage(ChatColor.RED+"tps应该大于0小于等于1000");
-            return false;
+            return true;
         }
         long mspt=(long)(1000D/tps);
         plugin.getConfig().set("mspt",mspt);
@@ -42,10 +42,15 @@ public class maincommand implements CommandExecutor
         {
            plugin.getApi().setmspt(mspt);
         }
+        catch (MsptIllegalException e)
+        {
+            sender.sendMessage(ChatColor.RED+"出现错误,tps设置不合法");
+            return true;
+        }
         catch (Throwable e)
         {
-            sender.sendMessage(ChatColor.RED+"出现错误,请向开发者反馈此bug");
-            return false;
+            sender.sendMessage(ChatColor.RED+"出现错误,请向开发者反馈,错误代码 0X01");
+            return true;
         }
         sender.sendMessage(ChatColor.GREEN+"tps已设置为"+tps);
         return true;

@@ -10,9 +10,9 @@ import java.lang.reflect.Method;
 
 public final class BluestarTpsControl extends JavaPlugin
 {
-    private Class<?> minecraftServerClass=null;
-    private Method setmspt=null;
-    private Method getmspt=null;
+    private Class<?> minecraftServerClass;
+    private Method setmspt;
+    private Method getmspt;
     private BukkitTask task;
     private final BluestarTpsControlApi api;
 

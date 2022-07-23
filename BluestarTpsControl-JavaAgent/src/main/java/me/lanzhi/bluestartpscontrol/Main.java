@@ -45,10 +45,10 @@ public class Main
                 {
                     CtClass clazz=pool.get(className);
                     clazz.addField(CtField.make("private static long BluestarMSPT=50L;",clazz));
-                    clazz.getDeclaredMethod("bg").insertBefore("{ $0.ao+=BluestarMSPT-50L; }");
-                    clazz.getDeclaredMethod("x").insertBefore("{ $0.ap=java.lang.Math.max(net.minecraft.SystemUtils.b()+BluestarMSPT,$0.ao); }");
+                    //clazz.getDeclaredMethod("a",pool.get).insertBefore("{ $0.ag+=BluestarMSPT-50L; }");
+                    clazz.getDeclaredMethod("w").insertBefore("{ $0.ag+=BluestarMSPT-50L;$0.ah=java.lang.Math.max(net.minecraft.SystemUtils.b()+BluestarMSPT,$0.ag); }");
                     clazz.addMethod(CtNewMethod.make("public static void setmspt(long mspt){ if(mspt!=0L)BluestarMSPT=mspt; }",clazz));
-                    clazz.addMethod(CtNewMethod.make("public static void getmspt(){ return BluestarMSPT; }",clazz));
+                    clazz.addMethod(CtNewMethod.make("public static long getmspt(){ return BluestarMSPT; }",clazz));
                     System.out.println("[BluestarTpsControl] Class "+className+" 变更成功");
                     return clazz.toBytecode();
                 }
