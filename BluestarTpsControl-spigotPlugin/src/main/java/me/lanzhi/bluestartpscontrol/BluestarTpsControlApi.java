@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 
 public class BluestarTpsControlApi implements BluestarTpsControlAPI
 {
-    private BluestarTpsControl plugin;
+    private final BluestarTpsControl plugin;
 
     public BluestarTpsControlApi(BluestarTpsControl plugin)
     {

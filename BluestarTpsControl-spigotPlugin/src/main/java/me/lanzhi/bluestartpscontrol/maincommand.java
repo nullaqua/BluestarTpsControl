@@ -1,9 +1,11 @@
 package me.lanzhi.bluestartpscontrol;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
 public class maincommand implements CommandExecutor
 {

@@ -59,12 +59,12 @@ public final class BluestarTpsControl extends JavaPlugin
         System.out.println("BluestarTpsControl已禁用");
     }
 
-    protected Method getGetmspt()
+    Method getGetmspt()
     {
         return getmspt;
     }
 
-    protected Method getSetmspt()
+    Method getSetmspt()
     {
         return setmspt;
     }
